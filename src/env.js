@@ -8,6 +8,12 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    OPENAI_API_KEY: z.string(),
+    // AUTH_SECRET: z.string(),
+    // KV_URL: z.string(),
+    // KV_REST_API_URL: z.string(),
+    // KV_REST_API_TOKEN: z.string(),
+    // KV_REST_API_READ_ONLY_TOKEN: z.string()
   },
 
   /**
@@ -25,6 +31,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
