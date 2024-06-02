@@ -9,9 +9,9 @@ export default async function ChatPage() {
     (message) => message.role === "assistant" || message.role === "user",
   );
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="relative flex h-full w-full flex-col">
       <ChatMessageList messages={messages} />
-      <div className="absolute bottom-0  m-0 w-full rounded-t-3xl border-t border-border/50 bg-background pb-4 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50">
+      <div className="absolute bottom-0  w-full rounded-t-3xl border-t border-border/50 bg-background pb-4 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50">
         <ChatInput />
       </div>
     </div>

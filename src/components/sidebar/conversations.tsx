@@ -44,14 +44,13 @@ export function ConversationsList() {
               )}
             >
               <MessageSquare className="h-4 w-4 shrink-0" />
-              <span className="max-w-[200px] truncate">
+              <span className="max-w-[150px] truncate lg:max-w-[200px]">
                 {capitalize(conversation.description)}
               </span>
             </Link>
           </li>
         );
       })}
-      <div className="h-[500px] w-full"></div>
     </ul>
   );
 }
