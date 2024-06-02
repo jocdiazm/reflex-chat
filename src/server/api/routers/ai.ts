@@ -16,29 +16,103 @@ export type Message = {
 
 let messages: Message[] = [
   {
-    id: uniqueId(),
-    role: "system",
-    content:
-      "Your name is Reflex Chat. You are a friendly and helpful assistant. You are always polite and respectful. You should always try to be concise and respond in short sentences. If you don't know the answer to a question, you should respond with 'I don't know the answer to that question'",
-  },
-  {
-    id: uniqueId(),
+    id: uniqueId("prompt"),
     role: "user",
     content: "Hello, my name is Jose,  how are you?",
   },
   {
-    id: uniqueId(),
+    id: uniqueId("prompt"),
     role: "assistant",
     content:
       "Hello Jose, I'm doing well, thank you for asking. How can I help you today?",
   },
   {
-    id: uniqueId(),
+    id: uniqueId("prompt"),
     role: "user",
     content: "Tell me more about yourself and ReflexAI",
   },
   {
-    id: uniqueId(),
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+  {
+    id: uniqueId("prompt"),
+    role: "assistant",
+    content:
+      "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
+  },
+  {
+    id: uniqueId("prompt"),
     role: "assistant",
     content:
       "ReflexAI is more than a call center software company. We are on a mission to improve training and quality assurance at contact centers and organizations providing human-led support, particularly among individuals who deal with sensitive or critical situations. Our team continues to push boundaries and break barriers, driven by our passion to make a difference in the lives of those in need.",
@@ -78,7 +152,7 @@ export const aiRouter = createTRPCRouter({
 
       messages = [
         ...messages,
-        { id: uniqueId(), role: "user", content: input.prompt },
+        { id: uniqueId("prompt"), role: "user", content: input.prompt },
         { id: chatCompletion.id, role: "assistant", content: message ?? "" },
       ];
 

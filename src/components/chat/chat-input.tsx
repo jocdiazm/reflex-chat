@@ -31,7 +31,7 @@ export function ChatInput() {
 
   return (
     <form
-      className="flex items-center gap-2 border-t border-gray-300 px-4 py-2"
+      className="flex w-full items-center  gap-2 border-gray-300 px-4 py-2"
       onSubmit={(e) => {
         e.preventDefault();
         submitPrompt.mutate({ prompt });

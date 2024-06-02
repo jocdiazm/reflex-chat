@@ -13,11 +13,13 @@ const UserMessage = ({ content }: { content: string }) => {
 };
 const SystemMessage = ({ content }: { content: string }) => {
   return (
-    <div className="flex w-full items-start justify-start">
+    <div className="flex h-full w-full items-start justify-start">
       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
         <Bot />
       </div>
-      <div className="relative w-full flex-1 px-5 py-2">{content}</div>
+      <div className="relative w-full flex-1 px-5 py-2 text-left rtl:text-right">
+        {content}
+      </div>
     </div>
   );
 };

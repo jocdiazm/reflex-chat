@@ -14,7 +14,7 @@ export const ChatMessageList = ({
   messages: Message[];
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-
+  console.log(messages);
   React.useEffect(() => {
     if (messages.length) {
       setTimeout(() => {
@@ -27,13 +27,13 @@ export const ChatMessageList = ({
   }, [messages.length]);
 
   return (
-    <div className="flex w-full max-w-full flex-1 flex-col justify-end overflow-hidden">
-      <div className="scrollbar-thin  scrollbar-track-gray-100 scrollbar-thumb-gray-200 flex flex-col-reverse gap-6 overflow-y-auto p-10">
+    <div className="scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-200 flex max-h-full w-full max-w-full flex-1 flex-col  justify-start overflow-auto">
+      <div className="mb-[100px] flex flex-col-reverse  gap-6 px-2 py-5">
         {messages
-          ?.reverse()
           .map((message) => <ChatMessage message={message} key={message?.id} />)
           .reverse()}
       </div>
+
       <div
         className={cn(
           "flex items-center gap-2 p-2 text-sm opacity-50",
