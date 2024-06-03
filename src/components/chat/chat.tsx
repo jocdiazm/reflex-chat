@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { api } from "@/trpc/react";
+import { toast } from "sonner";
 
 export function Chat({ id, messages }: { id?: string; messages?: Message[] }) {
   const router = useRouter();
@@ -31,6 +32,12 @@ export function Chat({ id, messages }: { id?: string; messages?: Message[] }) {
       if (!id) {
         router.push(`/chat/${conversationId}`);
       }
+    },
+    onError: () => {
+      toast.error("Humn... so, there was an error.", {
+        description:
+          "We couldn't process your request. Please try again later.",
+      });
     },
   });
 
