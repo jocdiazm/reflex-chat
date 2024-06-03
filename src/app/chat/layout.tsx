@@ -29,7 +29,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ConversationsList } from "@/components/sidebar/conversations";
+import { ConversationsWrapper } from "@/components/sidebar/conversations-wrapper";
 
 export default function ChatLayout({
   children,
@@ -62,7 +62,7 @@ export default function ChatLayout({
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <ConversationsList />
+              <ConversationsWrapper />
             </nav>
           </div>
         </div>

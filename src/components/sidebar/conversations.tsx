@@ -5,32 +5,13 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import capitalize from "lodash-es/capitalize";
-import { type Message } from "@/server/api/routers/ai";
+import { type Conversations } from "@/server/api/routers/ai";
 
-//  replace this with a trpc call to get the conversations
-export type Conversation = {
-  id: string;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
-  chatHistory?: Message[];
-};
-const conversations: Conversation[] = [
-  {
-    id: "conversation-1",
-    description: "Conversation about ReflexAI",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: "conversation-2",
-    description: "Another conversation about ReflexAI very very very long",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-export function ConversationsList() {
+export function ConversationsList({
+  conversations,
+}: {
+  conversations: Conversations;
+}) {
   const pathname = usePathname();
   const isActive = (path: string) => path === pathname;
 

@@ -2,8 +2,8 @@
 
 import { ChatInput } from "@/components/chat/chat-input";
 import { ChatHistory } from "@/components/chat/chat-history";
+import { type Messages } from "@/server/api/routers/ai";
 import React from "react";
-import { type Message } from "@/server/api/routers/ai";
 import { EmptyScreen } from "@/components/chat/chat-empty";
 import isEmpty from "lodash-es/isEmpty";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ import { useState } from "react";
 import { api } from "@/trpc/react";
 import { toast } from "sonner";
 
-export function Chat({ id, messages }: { id?: string; messages?: Message[] }) {
+export function Chat({ id, messages }: { id?: string; messages?: Messages }) {
   const router = useRouter();
   const utils = api.useUtils();
   const [prompt, setPrompt] = useState("");
@@ -20,7 +20,7 @@ export function Chat({ id, messages }: { id?: string; messages?: Message[] }) {
   const optimisticHistory = [
     { id: "pending-user", role: "user", content: prompt },
     { id: "pending-assistant", role: "assistant", content: "" },
-  ] as Message[];
+  ] as Messages;
 
   const submitPrompt = api.ai.completion.useMutation({
     onSuccess: async ({ id: conversationId }) => {
