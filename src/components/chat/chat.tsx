@@ -53,7 +53,7 @@ export function Chat({ id, messages }: { id?: string; messages?: Message[] }) {
       {!id || isEmpty(messages) ? (
         <EmptyScreen />
       ) : (
-        <ChatHistory messages={optimisticMessages} />
+        <ChatHistory messages={optimisticMessages} isLoading={true} />
       )}
       <div className="absolute bottom-0  w-full rounded-t-3xl border-t border-border/50 bg-background pb-4 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50">
         <ChatInput

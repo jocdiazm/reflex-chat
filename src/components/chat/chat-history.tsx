@@ -33,15 +33,6 @@ export const ChatHistory = ({
         ))}
       </div>
       <div className="h-[200px] w-full" ref={ref}></div>
-      <div
-        className={cn(
-          "flex items-center gap-2 p-2 text-sm opacity-50",
-          !isLoading && "hidden",
-        )}
-      >
-        <Loader2 className="animate-spin" />{" "}
-        <span className="animate-pulse text-sm">Working...</span>
-      </div>
     </div>
   );
 };
