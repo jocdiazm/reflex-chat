@@ -48,9 +48,16 @@ export default function ChatLayout({
               <BotMessageSquare className="h-6 w-6" />
               <span className="">Reflex Chat</span>
             </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <SquarePen className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="ml-auto h-8 w-8"
+            >
+              <Link href="/chat">
+                <SquarePen className="h-4 w-4" />
+                <span className="sr-only">Toggle notifications</span>
+              </Link>
             </Button>
           </div>
           <div className="flex-1">
