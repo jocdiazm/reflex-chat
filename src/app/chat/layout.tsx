@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BotMessageSquare, Menu, SquarePen, User2 } from "lucide-react";
+import { BotMessageSquare, Menu, SquarePen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,6 +16,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ConversationsWrapper } from "@/components/sidebar/conversations-wrapper";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
+import { ExternalLink } from "@/components/ui/external-link";
 
 export default function ChatLayout({
   children,
@@ -104,16 +107,37 @@ export default function ChatLayout({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
-                <User2 className="h-5 w-5" />
-                <span className="sr-only">Toggle user menu</span>
+                <Avatar className="border border-primary/50">
+                  <AvatarImage
+                    src="https://github.com/jocdiazm.png"
+                    alt="@jocdiazm"
+                  />
+                  <AvatarFallback>JC</AvatarFallback>
+                </Avatar>
+                <span className="sr-only">Toggle user details</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>My Profiles</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
+              <DropdownMenuItem className="flex items-center gap-1">
+                <GithubIcon />
+                <ExternalLink href="https://www.linkedin.com/in/jocdiazm/">
+                  Github
+                </ExternalLink>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex items-center gap-1">
+                <LinkedinIcon />
+                <ExternalLink href="https://www.linkedin.com/in/jocdiazm/">
+                  LinkedIn
+                </ExternalLink>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href="/">
+                  <span className="">Logout</span>
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
