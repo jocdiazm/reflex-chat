@@ -19,12 +19,12 @@ export function Chat({ id, messages }: { id?: string; messages?: Messages }) {
     React.useState<Messages | null>(null);
 
   React.useEffect(() => {
-    if (isEmpty(messages)) {
+    if (isEmpty(messages) && id) {
       toast.info("No messages to show");
       router.push("/chat/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages]);
+  }, [id, messages]);
 
   const submitPrompt = api.ai.completion.useMutation({
     onMutate: (variables) => {
