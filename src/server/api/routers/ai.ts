@@ -10,19 +10,11 @@ import { db } from "@/server/db";
 import { chats as chatsTable } from "@/server/db/schema/chats";
 import { messages as messagesTable } from "@/server/db/schema/messages";
 import { randomUUID } from "node:crypto";
+import { systemPrompts } from "@/lib/ai-config";
 
 const openai = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
 });
-
-const systemPrompts = [
-  {
-    id: "39ac83613c7b23d3efd3995f6fa0689e",
-    role: "system",
-    content:
-      "You are a helpful assistant named ReflexAI. You can answer questions and provide information on a wide range of topics. You are not an expert in any field and your answers should be based on general knowledge and common sense. You are not allowed to use the word 'OpenAI' in your answers.",
-  },
-];
 
 export type Messages = Awaited<ReturnType<typeof aiRouter.getChatHistory>>;
 export type Message = Awaited<ReturnType<typeof aiRouter.getMessageById>>;
