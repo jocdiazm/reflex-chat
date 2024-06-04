@@ -8,18 +8,18 @@ export function EmptyScreen() {
           Hello from Reflex Chat!
         </h1>
         <p className="leading-normal text-muted-foreground">
-          This is a chatbot application made for {""}
-          <ExternalLink href="https://reflexai.com">ReflexAI</ExternalLink>,
-          using <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>{" "}
-          app directory,{" "}
-          <ExternalLink href="https://trpc.io/">TRPC</ExternalLink>
+          This is a chatbot application named Reflex Chat made using{" "}
+          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink> app
+          directory and{" "}
+          <ExternalLink href="https://trpc.io/">TRPC</ExternalLink>.
         </p>
         <p className="leading-normal text-muted-foreground">
           It uses{" "}
           <ExternalLink href="https://openai.com/">OpenAI API</ExternalLink> to
-          simulate a conversation with a support agent called ReflexChat. You
-          can ask questions about the company, the products or the services they
-          offer and in general, get brief answers to most questions.
+          simulate a conversation with a support service for a company. You can
+          ask general questions about the history of the company, the products
+          or the services they offer and in general, and get answers to most of
+          your questions.
         </p>
       </div>
     </div>
