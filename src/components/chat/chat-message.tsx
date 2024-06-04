@@ -43,8 +43,8 @@ const SystemMessage = ({
       </div>
       {optimistic ? (
         <div className="flex w-full flex-col gap-2">
-          <Skeleton className="duration-[800] ml-2 h-[20px] w-[80%] animate-pulse rounded-full" />
-          <Skeleton className="duration-[700] ml-2 h-[20px] w-[80%] animate-pulse rounded-full" />
+          <Skeleton className="ml-2 h-[20px] w-[80%] animate-pulse rounded-full duration-700" />
+          <Skeleton className="ml-2 h-[20px] w-[80%] animate-pulse rounded-full duration-500" />
           <Skeleton className="ml-2 h-[20px] w-[60%] animate-pulse rounded-full" />
         </div>
       ) : (
@@ -56,6 +56,7 @@ const SystemMessage = ({
   );
 };
 export const ChatMessage = ({ message }: { message: Message }) => {
+  if (!message) return null;
   const Message = message.role === "user" ? UserMessage : SystemMessage;
   return (
     <Message

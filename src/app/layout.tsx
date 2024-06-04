@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 
+import { Toaster } from "@/components/ui/sonner";
 import { HydrationOverlay } from "@builder.io/react-hydration-overlay";
 import { TRPCReactProvider } from "@/trpc/react";
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className="max-h-dvh min-h-dvh">
         <HydrationOverlay>
           <TRPCReactProvider>{children}</TRPCReactProvider>
+          <Toaster position="top-center" richColors duration={2000} />
         </HydrationOverlay>
       </body>
     </html>

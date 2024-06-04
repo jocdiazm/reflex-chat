@@ -1,18 +1,10 @@
 "use client";
 
 import { ChatMessage } from "@/components/chat/chat-message";
-import { cn } from "@/lib/utils";
 import { type Message } from "@/server/api/routers/ai";
-import { Loader2 } from "lucide-react";
 import React from "react";
 
-export const ChatHistory = ({
-  messages,
-  isLoading = false,
-}: {
-  isLoading?: boolean;
-  messages?: Message[];
-}) => {
+export const ChatHistory = ({ messages }: { messages?: Message[] }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     if (messages?.length) {

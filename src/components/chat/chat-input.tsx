@@ -5,25 +5,24 @@ import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Send } from "lucide-react";
 import isEmpty from "lodash-es/isEmpty";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 export function ChatInput({
   id,
-  prompt,
-  setPrompt,
   isPendingSubmit,
   onSubmitPrompt,
 }: {
   id?: string;
-  prompt: string;
-  setPrompt: (prompt: string) => void;
   onSubmitPrompt: ({ prompt, id }: { prompt: string; id?: string }) => void;
   isPendingSubmit: boolean;
 }) {
+  const [prompt, setPrompt] = React.useState("");
   const onEnterKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       if (!isPendingSubmit && !isEmpty(prompt)) {
         onSubmitPrompt({ prompt, id });
+        setPrompt("");
       }
     }
   };

@@ -1,15 +1,15 @@
 import { z } from "zod";
-import { eq, desc } from "drizzle-orm";
+import { eq, asc, desc } from "drizzle-orm";
 
 import OpenAI from "openai";
 import { env } from "@/env";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { uniqueId } from "lodash-es";
 import { type ChatCompletionCreateParams } from "openai/resources/index.mjs";
 
 import { db } from "@/server/db";
 import { chats as chatsTable } from "@/server/db/schema/chats";
 import { messages as messagesTable } from "@/server/db/schema/messages";
+import { randomUUID } from "node:crypto";
 
 const openai = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
@@ -17,7 +17,7 @@ const openai = new OpenAI({
 
 const systemPrompts = [
   {
-    id: uniqueId("prompt"),
+    id: "39ac83613c7b23d3efd3995f6fa0689e",
     role: "system",
     content:
       "You are a helpful assistant named ReflexAI. You can answer questions and provide information on a wide range of topics. You are not an expert in any field and your answers should be based on general knowledge and common sense. You are not allowed to use the word 'OpenAI' in your answers.",
@@ -33,11 +33,11 @@ export const aiRouter = createTRPCRouter({
     .input(z.object({ prompt: z.string().min(1), id: z.string().optional() }))
     .mutation(async ({ input }) => {
       //  this is supposed to be an upsert of the new history or conversation
-      const conversationId = input.id ?? uniqueId("conversation");
+      const conversationId = input.id ?? randomUUID();
       if (!input?.id) {
         await db.insert(chatsTable).values({
           id: conversationId,
-          description: `${input.prompt}`.slice(0, 25),
+          description: `${input.prompt}`.slice(0, 40),
         });
       }
       const userHistory = await db
@@ -69,13 +69,11 @@ export const aiRouter = createTRPCRouter({
 
       await db.insert(messagesTable).values([
         {
-          id: uniqueId("prompt"),
           role: "user",
           content: input.prompt,
           chatId: conversationId,
         },
         {
-          id: chatCompletion.id,
           role: "assistant",
           content: message ?? "",
           chatId: conversationId,
@@ -111,9 +109,14 @@ export const aiRouter = createTRPCRouter({
         createdAt: chatsTable.createdAt,
       })
       .from(chatsTable)
+      .orderBy(desc(chatsTable.createdAt))
       .all();
   }),
-
+  deleteChat: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input }) => {
+      return await db.delete(chatsTable).where(eq(chatsTable.id, input.id));
+    }),
   getChatHistory: publicProcedure
     .input(z.object({ id: z.string().optional() }).optional())
     .query(async ({ input }) => {
@@ -127,7 +130,7 @@ export const aiRouter = createTRPCRouter({
           })
           .from(messagesTable)
           .where(eq(messagesTable.chatId, input.id))
-          .orderBy(desc(messagesTable.createdAt))
+          .orderBy(asc(messagesTable.createdAt))
           .all();
       }
       return [];
