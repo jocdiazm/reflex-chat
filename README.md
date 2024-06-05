@@ -20,7 +20,6 @@ Pretty much using following:
 - [OpenAI](https://github.com/openai/openai-node)
   
 ## DB schema relations 
-# Database Schema
 
 We got two tables. Chats and Messages. Which you can inspect using `npm run db:studio`
 
