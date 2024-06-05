@@ -12,10 +12,10 @@ Pretty much using following:
 - [Next.js](https://nextjs.org)
 - [tRPC](https://trpc.io)
 - [Drizzle](https://orm.drizzle.team)
-- [Libsql] (https://turso.tech/libsql)
+- [Libsql](https://turso.tech/libsql)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Shadcn/UI](https://ui.shadcn.com/)
-- [OpenAI] (https://github.com/openai/openai-node)
+- [OpenAI](https://github.com/openai/openai-node)
   
 ## Some caveats
 > [!IMPORTANT]  
