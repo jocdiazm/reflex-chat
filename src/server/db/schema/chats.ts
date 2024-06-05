@@ -8,6 +8,7 @@ export const chats = sqliteTable("reflex-chatbot_chats", {
     .primaryKey()
     .$defaultFn(() => randomUUID()),
   description: text("description").notNull(),
+  author: text("author").notNull().default("reflexchat-user"),
   createdAt: text("created_at")
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),

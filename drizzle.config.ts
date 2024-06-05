@@ -4,7 +4,7 @@ import { env } from "@/env";
 
 export default {
   schema: "./src/server/db/schema/*",
-  // driver: "turso",
+  driver: "turso",
   dialect: "sqlite",
   dbCredentials: {
     url: env.DATABASE_URL,
