@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, SquarePen, Trash2 } from "lucide-react";
+import { MessageSquare, Trash2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { api } from "@/trpc/react";
 import isEmpty from "lodash-es/isEmpty";
+import { TimeAgo } from "@/components/ui/timeago";
 
 export function ConversationsList({
   conversations,
@@ -56,17 +57,19 @@ export function ConversationsList({
         return (
           <li
             key={conversation.id}
-            className="focus-visible:ring:ring-primary group relative flex items-center justify-between px-1"
+            className={cn(
+              "focus-visible:ring:ring-primary group relative flex flex-col gap-0 rounded-lg px-1 text-muted-foreground transition-all ",
+            )}
           >
             <Link
               href={`/chat/${conversation.id}`}
               className={cn(
-                " flex flex-1 items-center gap-3 rounded-lg px-1 py-2 text-muted-foreground transition-all hover:text-primary",
-                active && "bg-muted text-primary/80",
+                "flex flex-1 items-center justify-start gap-3 rounded-lg px-1 py-2 hover:bg-muted/60 hover:text-primary",
+                active && "bg-muted text-primary/80 hover:bg-muted",
               )}
             >
               <MessageSquare className="h-4 w-4 shrink-0 text-inherit" />
-              <span className="max-w-[150px] truncate lg:max-w-[200px]">
+              <span className="max-w-[150px] truncate  lg:max-w-[200px]">
                 {capitalize(conversation.description)}
               </span>
 
@@ -79,6 +82,13 @@ export function ConversationsList({
                 <Trash2 className=" text-inherit hover:text-primary" />
               </Button>
             </Link>
+            <TimeAgo
+              timestamp={conversation.createdAt}
+              className={cn(
+                "invisible pb-0.5 pl-8 text-[10px] leading-tight text-muted-foreground group-hover:visible",
+                active && "visible",
+              )}
+            />
           </li>
         );
       })}
