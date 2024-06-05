@@ -63,25 +63,25 @@ export function ConversationsList({
           >
             <div
               className={cn(
-                "hover:bg-muted/60 hover:text-primary",
+                "rounded-lg pl-0.5 hover:bg-muted/60 hover:text-primary",
                 active && "bg-muted text-primary/80 hover:bg-muted",
               )}
             >
               <Link
                 href={`/chat/${conversation.id}`}
                 className={cn(
-                  "flex flex-1 items-center justify-start gap-3 rounded-lg px-1 py-2 ",
+                  "flex flex-1 items-center justify-start gap-1.5 rounded-lg px-0.5 py-2 ",
                 )}
               >
                 <MessageSquare className="h-4 w-4 shrink-0 text-inherit" />
-                <span className="max-w-[150px] truncate  lg:max-w-[200px]">
+                <span className="max-w-[250px] truncate  sm:max-w-[150px]">
                   {capitalize(conversation.description)}
                 </span>
               </Link>
               <Button
                 variant="icon"
                 size="icon"
-                className="absolute right-2 top-2  hidden justify-self-end text-muted-foreground hover:flex group-hover:flex"
+                className="absolute right-1.5 top-2  hidden justify-self-end text-muted-foreground hover:flex group-hover:flex"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleDelete(conversation.id, active);
