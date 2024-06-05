@@ -17,6 +17,39 @@ Pretty much using following:
 - [Shadcn/UI](https://ui.shadcn.com/)
 - [OpenAI](https://github.com/openai/openai-node)
   
+## DB schema relations 
+# Database Schema
+
+We got two tables. Chats and Messages. Which you can inspect using `npm run db:studio`
+
+### Chats Table
+Holds the information about the "Conversation" or (chat) history. 
+
+| Column     | Type   | Constraints                         | Default Value          | Description               |
+|------------|--------|-------------------------------------|------------------------|---------------------------|
+| id         | TEXT   | NOT NULL, PRIMARY KEY               | randomUUID()           | Unique identifier for chat|
+| description| TEXT   | NOT NULL                            |                        | Description of the chat   |
+| author     | TEXT   | NOT NULL                            | "reflexchat-user"      | Author of the chat        |
+| createdAt  | TEXT   | NOT NULL                            | CURRENT_TIMESTAMP      | Creation timestamp        |
+| updatedAt  | TEXT   | NOT NULL                            | CURRENT_TIMESTAMP      | Last update timestamp     |
+
+### Messages Table
+Holds the information about each individual Message. It's related to Chats by the ID. Some fields follow the OpenAI convention regarding e.g. `Role`
+
+| Column     | Type   | Constraints                         | Default Value          | Description               |
+|------------|--------|-------------------------------------|------------------------|---------------------------|
+| id         | TEXT   | NOT NULL, PRIMARY KEY               | randomUUID()           | Unique identifier for message|
+| chatId     | TEXT   | NOT NULL, REFERENCES chats(id)      |                        | Foreign key to Chats table|
+| role       | TEXT   | NOT NULL, ENUM ["user", "assistant"]|                        | Role of the message sender|
+| content    | TEXT   | NOT NULL                            |                        | Content of the message    |
+| createdAt  | TEXT   | NOT NULL                            | CURRENT_TIMESTAMP      | Creation timestamp        |
+
+## Relationships
+
+- **Messages.chatId** references **Chats.id**
+  - **On Delete**: Cascade
+
+
 ## Some caveats
 > [!IMPORTANT]  
 > You'll need an OpenAPI key to run locally or deploy this app. 
