@@ -1,5 +1,7 @@
 # ChatBot APP - Reflex Chat
 
+Deployed version: https://reflex-chat.vercel.app/chat
+
 This is a Next.js application meant to showcase a modern chatbot.
 <img width="1285" alt="chat-01" src="https://github.com/jocdiazm/reflex-chat/assets/13368066/0c7c1b17-f182-4f48-9ba7-59995347485e">
 <img width="1285" alt="chat-02" src="https://github.com/jocdiazm/reflex-chat/assets/13368066/ca6394a0-ed0f-4d13-8303-6f18225a041b">
@@ -18,7 +20,6 @@ Pretty much using following:
 - [OpenAI](https://github.com/openai/openai-node)
   
 ## DB schema relations 
-# Database Schema
 
 We got two tables. Chats and Messages. Which you can inspect using `npm run db:studio`
 
@@ -74,3 +75,5 @@ npm run db:studio
 ## How to deploy 
 
 You can follow the deployment's guide for some of the providers [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+
+The current deployment is in vercel. 
