@@ -18,6 +18,7 @@ import {
 import { ConversationsWrapper } from "@/components/sidebar/conversations-wrapper";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/brand-icons";
+import { TooltipWrapper as Tooltip } from "@/components/ui/tooltip-wrapper";
 import { ExternalLink } from "@/components/ui/external-link";
 
 export default function ChatLayout({
@@ -37,17 +38,20 @@ export default function ChatLayout({
               <BotMessageSquare className="h-6 w-6" />
               <span className="">Reflex Chat</span>
             </Link>
-            <Button
-              asChild
-              variant="outline"
-              size="icon"
-              className="ml-auto h-8 w-8"
-            >
-              <Link href="/chat">
-                <SquarePen className="h-4 w-4" />
-                <span className="sr-only">Toggle notifications</span>
-              </Link>
-            </Button>
+
+            <Tooltip tooltip="New chat" side="right" sideOffset={8}>
+              <Button
+                asChild
+                variant="outline"
+                size="icon"
+                className="ml-auto h-8 w-8"
+              >
+                <Link href="/chat">
+                  <SquarePen className="h-4 w-4" />
+                  <span className="sr-only">Toggle notifications</span>
+                </Link>
+              </Button>
+            </Tooltip>
           </div>
           <div className="flex-1">
             <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
@@ -83,17 +87,19 @@ export default function ChatLayout({
                     <span className="">Reflex Chat</span>
                   </Link>
                   <SheetClose asChild>
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="icon"
-                      className="ml-auto h-8 w-8"
-                    >
-                      <Link href="/chat">
-                        <SquarePen className="h-4 w-4" />
-                        <span className="sr-only">Toggle notifications</span>
-                      </Link>
-                    </Button>
+                    <Tooltip tooltip="New Chat" side="bottom" sideOffset={8}>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="icon"
+                        className="ml-auto h-8 w-8"
+                      >
+                        <Link href="/chat">
+                          <SquarePen className="h-4 w-4" />
+                          <span className="sr-only">New chat</span>
+                        </Link>
+                      </Button>
+                    </Tooltip>
                   </SheetClose>
                 </div>
                 <div className="flex flex-1 flex-col">

@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { api } from "@/trpc/react";
 import isEmpty from "lodash-es/isEmpty";
 import { TimeAgo } from "@/components/ui/timeago";
+import { TooltipWrapper as Tooltip } from "@/components/ui/tooltip-wrapper";
 
 export function ConversationsList({
   conversations,
@@ -78,17 +79,19 @@ export function ConversationsList({
                   {capitalize(conversation.description)}
                 </span>
               </Link>
-              <Button
-                variant="icon"
-                size="icon"
-                className="absolute right-1.5 top-2  hidden justify-self-end text-muted-foreground hover:flex group-hover:flex"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDelete(conversation.id, active);
-                }}
-              >
-                <Trash2 className=" text-inherit hover:text-primary" />
-              </Button>
+              <Tooltip tooltip="Delete" side="right" sideOffset={8}>
+                <Button
+                  variant="icon"
+                  size="icon"
+                  className="absolute right-1.5 top-2  hidden justify-self-end text-muted-foreground hover:flex group-hover:flex"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(conversation.id, active);
+                  }}
+                >
+                  <Trash2 className=" text-inherit hover:text-primary" />
+                </Button>
+              </Tooltip>
             </div>
             <TimeAgo
               timestamp={conversation.createdAt}
