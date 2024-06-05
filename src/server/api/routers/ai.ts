@@ -109,6 +109,9 @@ export const aiRouter = createTRPCRouter({
     .mutation(async ({ input }) => {
       return await db.delete(chatsTable).where(eq(chatsTable.id, input.id));
     }),
+  deleteAllChats: publicProcedure.mutation(async () => {
+    return await db.delete(chatsTable);
+  }),
   getChatHistory: publicProcedure
     .input(z.object({ id: z.string().optional() }).optional())
     .query(async ({ input }) => {
