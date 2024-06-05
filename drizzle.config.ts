@@ -8,6 +8,7 @@ export default {
   dialect: "sqlite",
   dbCredentials: {
     url: env.DATABASE_URL,
+    authToken: env.DATABASE_AUTH_TOKEN,
   },
   out: "./drizzle",
   tablesFilter: ["reflex-chatbot_*"],
