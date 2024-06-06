@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: TypeScript Check
-        run: npm run tsc
+        run: npm install -g typescript && npm run tsc
 
       - name: Run Tests
         run: npm run test:ci
