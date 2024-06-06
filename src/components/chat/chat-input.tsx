@@ -17,6 +17,15 @@ export function ChatInput({
   isPendingSubmit: boolean;
 }) {
   const [prompt, setPrompt] = React.useState("");
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!isPendingSubmit && !isEmpty(prompt)) {
+      onSubmitPrompt({ prompt, id });
+      setPrompt("");
+    }
+  };
+
   const onEnterKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -43,10 +52,7 @@ export function ChatInput({
 
       <form
         className="mx-2 flex  items-center gap-2 border-gray-300 px-4 py-2"
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmitPrompt({ prompt, id });
-        }}
+        onSubmit={onSubmit}
       >
         <Textarea
           className="scrollbar-app resize-none overflow-y-auto rounded-lg text-lg placeholder:text-muted-foreground/50"
