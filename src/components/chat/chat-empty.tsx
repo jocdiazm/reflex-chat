@@ -18,7 +18,7 @@ export function EmptyScreen() {
           <ExternalLink href="https://openai.com/">OpenAI API</ExternalLink> to
           simulate a conversation with a support service for a company. You can
           ask general questions about the history of the company, the products
-          or the services they offer and in general, and get answers to most of
+          or the services they offer and, in general, get answers to most of
           your questions.
         </p>
       </div>
