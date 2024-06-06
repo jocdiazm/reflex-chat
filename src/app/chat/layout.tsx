@@ -147,7 +147,7 @@ export default function ChatLayout({
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
-        <main className="relative flex max-h-[calc(100vh-60px)] flex-1 gap-4 overflow-auto">
+        <main className="relative flex max-h-[calc(100dvh-60px)] flex-1 gap-4 overflow-auto">
           {children}
         </main>
       </div>
